@@ -94,33 +94,39 @@ interface SpeechRecognitionConstructor {
   new (): SpeechRecognition;
 }
 
-// Promotional images for the carousel - Updated with new images without tint/overlay
+// Import restaurant stock images for carousel
+import restaurantInterior1 from "@assets/stock_images/elegant_restaurant_i_e8a94033.jpg";
+import restaurantInterior2 from "@assets/stock_images/elegant_restaurant_i_114f645e.jpg";
+import restaurantInterior3 from "@assets/stock_images/elegant_restaurant_i_46bc3b6c.jpg";
+import gourmetFood1 from "@assets/stock_images/gourmet_food_plating_4fa14995.jpg";
+import gourmetFood2 from "@assets/stock_images/gourmet_food_plating_6ae9981b.jpg";
+
+// Promotional images for the carousel - Restaurant ambiance and food
 const promotionalImages = [
   {
     id: 1,
-    // src: "/images/Diwali.png",
-    src: "https://mingschinesecuisine.in/assets/gallary1_1756277345984-LJUZOhXj.png",
-    alt: "Pastry Dishes on Plates", 
+    src: restaurantInterior1,
+    alt: "Elegant Restaurant Interior",
   },
   {
     id: 2,
-    src: "/images/safe.svg",
-    alt: "Empty Bar with Lights",
+    src: gourmetFood1,
+    alt: "Gourmet Food Plating",
   },
   {
     id: 3,
-    src: "https://mingschinesecuisine.in/assets/4_1756276448587-DKvHetPN.png",
-    alt: "Clear Wine Glass on Table",
+    src: restaurantInterior2,
+    alt: "Fine Dining Ambiance",
   },
   {
     id: 4,
-    src: "https://mingschinesecuisine.in/assets/gallary5_1756277345985-CAVd5kop.png",
-    alt: "Brown Wooden Table",
+    src: gourmetFood2,
+    alt: "Delicious Restaurant Dishes",
   },
   {
     id: 5,
-    src: "https://mingschinesecuisine.in/assets/3_1756276448586-BYKI3naG.png",
-    alt: "Traditional Chinese Cuisine",
+    src: restaurantInterior3,
+    alt: "Restaurant Bar Area",
   },
 ];
 
@@ -345,13 +351,19 @@ export default function Menu() {
               </Button>
             </div>
 
-            {/* Centered Logo */}
-            <div className="absolute left-1/2 transform -translate-x-1/2">
-              <img
-                src="/images/logo.png"
-                alt="Restaurant Logo"
-                className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto object-contain"
-              />
+            {/* Centered Logo Text */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 text-center">
+              <h1
+                className="font-bold"
+                style={{
+                  fontSize: 'clamp(18px, 4vw, 28px)',
+                  color: '#D97706',
+                  fontFamily: "'Playfair Display', serif",
+                  letterSpacing: '1px',
+                }}
+              >
+                BARREL BORN
+              </h1>
             </div>
 
             <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 flex-shrink-0">

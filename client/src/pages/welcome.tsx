@@ -81,13 +81,26 @@ export default function Welcome() {
           }}
         >
 
-          {/* Ming's Logo */}
+          {/* Barrel Born Logo Text */}
           <div className="flex flex-col items-center w-full">
-            <img
-              src="/images/logo.png"
-              alt="Ming's Chinese Cuisine"
-              style={{ width: `${240 * scaleFactor}px`, height: 'auto' }}
-            />
+            <h1
+              className="font-bold text-center"
+              style={{
+                fontSize: `${48 * scaleFactor}px`,
+                color: '#D97706',
+                fontFamily: "'Playfair Display', serif",
+                letterSpacing: '2px',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
+              }}
+            >
+              BARREL BORN
+            </h1>
+            <p
+              className="text-gray-600 tracking-widest"
+              style={{ fontSize: `${14 * scaleFactor}px`, marginTop: `${8 * scaleFactor}px` }}
+            >
+              RESTAURANT & BAR
+            </p>
           </div>
 
           {/* Social Media Icons */}
@@ -181,11 +194,7 @@ export default function Welcome() {
               className="text-gray-700 leading-tight"
               style={{ fontSize: `${11 * scaleFactor}px` }}
             >
-              <p>SHOP NO 2&3, GANGA GODAVARI</p>
-              <p>APARTMENT, KATEMANIVALI NAKA,</p>
-              <p>PRABHURAM NAGAR, KALYAN EAST,</p>
-              <p>KALYAN EAST, THANE, KALYAN,</p>
-              <p>MAHARASHTRA, 421306</p>
+              <p>THANE, MAHARASHTRA</p>
             </div>
           </div>
 
@@ -209,14 +218,12 @@ export default function Welcome() {
               className="text-gray-700"
               style={{ fontSize: `${11 * scaleFactor}px`, gap: `${4 * scaleFactor}px` }}
             >
-              <p>info@mingschinesecuisine.in</p>
-              <p>+91 75069 69333</p>
+              <p>info@barrelborn.in</p>
               <p
                 className="text-orange-500 cursor-pointer no-underline"
-                onClick={() => window.open("http://www.mingschinesecuisine.in", "_blank")}
                 style={{ textDecoration: 'none' }}
               >
-                www.mingschinesecuisine.in
+                www.barrelborn.in
               </p>
             </div>
           </div>
