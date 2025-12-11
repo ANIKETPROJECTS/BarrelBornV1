@@ -16,6 +16,10 @@
     {
       "src": "api/cart/index.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "api/categories/index.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -24,8 +28,16 @@
       "dest": "/api/menu-items/index.js"
     },
     {
+      "src": "/api/menu-items/category/(.*)",
+      "dest": "/api/menu-items/index.js?category=$1"
+    },
+    {
       "src": "/api/cart",
       "dest": "/api/cart/index.js"
+    },
+    {
+      "src": "/api/categories",
+      "dest": "/api/categories/index.js"
     },
     {
       "src": "/Welcome.mp3",
