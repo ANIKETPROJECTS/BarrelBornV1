@@ -52,7 +52,7 @@
 
 //   constructor(connectionString: string) {
 //     this.client = new MongoClient(connectionString);
-//     this.db = this.client.db("mingsdb");
+//     this.db = this.client.db("Barrelborn");
 //     this.categoryCollections = new Map();
 
 //     // Initialize collections for each category with correct collection names
@@ -329,7 +329,7 @@
 //   }
 // }
 
-// const connectionString = "mongodb+srv://airavatatechnologiesprojects:8tJ6v8oTyQE1AwLV@mingsdb.mmjpnwc.mongodb.net/?retryWrites=true&w=majority&appName=MINGSDB";
+// const connectionString = "mongodb+srv://airavatatechnologiesprojects:8tJ6v8oTyQE1AwLV@Barrelborn.mmjpnwc.mongodb.net/?retryWrites=true&w=majority&appName=Barrelborn";
 // export const storage = new MongoStorage(connectionString);
 import { MongoClient, Db, Collection, ObjectId } from "mongodb";
 import { type User, type InsertUser, type MenuItem, type InsertMenuItem, type CartItem, type InsertCartItem } from "@shared/schema";
@@ -407,7 +407,7 @@ export class MongoStorage implements IStorage {
 
   constructor(connectionString: string) {
     this.client = new MongoClient(connectionString);
-    this.db = this.client.db("mingsdb");
+    this.db = this.client.db("Barrelborn");
     this.categoryCollections = new Map();
 
     // Initialize collections for each category with correct collection names
