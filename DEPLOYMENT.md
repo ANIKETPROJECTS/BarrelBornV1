@@ -71,7 +71,7 @@ git push -u origin main
 2. Navigate to Settings → Environment Variables
 3. Add these variables:
    - **Name:** `MONGODB_URI`
-   - **Value:** `mongodb+srv://airavatatechnologiesprojects:8tJ6v8oTyQE1AwLV@Barrelborn.mmjpnwc.mongodb.net/?retryWrites=true&w=majority&appName=Barrelborn`
+   - **Value:** `mongodb+srv://airavatatechnologiesprojects:8tJ6v8oTyQE1AwLV@barrelborn.mmjpnwc.mongodb.net/?retryWrites=true&w=majority&appName=barrelborn`
    - **Environment:** Production (and Preview if needed)
 
 **Your MongoDB connection string is ready to use** - just copy it from above!

@@ -12,7 +12,7 @@ async function connectToDatabase() {
     client = new MongoClient(connectionString);
     await client.connect();
   }
-  return client.db("Barrelborn");
+  return client.db("barrelborn");
 }
 
 export default async function handler(req, res) {

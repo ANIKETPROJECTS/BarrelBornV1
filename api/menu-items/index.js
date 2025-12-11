@@ -12,7 +12,7 @@
 //     client = new MongoClient(connectionString);
 //     await client.connect();
 //   }
-//   return client.db("Barrelborn");
+//   return client.db("barrelborn");
 // }
 
 // function sortMenuItems(items) {
@@ -172,7 +172,7 @@ async function connectToDatabase() {
     client = new MongoClient(connectionString);
     await client.connect();
   }
-  return client.db("Barrelborn");
+  return client.db("barrelborn");
 }
 
 function sortMenuItems(items) {
