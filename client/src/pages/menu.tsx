@@ -22,6 +22,46 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import DishCard from "@/components/dish-card";
 import type { MenuItem } from "@shared/schema";
 
+// Import generated category images
+import nibblesImg from "@assets/generated_images/nibbles_snacks_appetizer.png";
+import titbitsImg from "@assets/generated_images/titbits_finger_food.png";
+import soupsImg from "@assets/generated_images/soups_hot_bowl.png";
+import saladsImg from "@assets/generated_images/salads_fresh_vegetables.png";
+import startersImg from "@assets/generated_images/starters_appetizers_fried.png";
+import charcoalImg from "@assets/generated_images/charcoal_grilled_kebabs.png";
+import pastaImg from "@assets/generated_images/pasta_italian_dish.png";
+import pizzaImg from "@assets/generated_images/pizza_italian_cheese.png";
+import slidersImg from "@assets/generated_images/sliders_mini_burgers.png";
+import entreeImg from "@assets/generated_images/entree_main_course.png";
+import baoDimsumImg from "@assets/generated_images/bao_dimsum_dumplings.png";
+import curriesImg from "@assets/generated_images/curries_indian_spiced.png";
+import biryaniImg from "@assets/generated_images/biryani_aromatic_rice.png";
+import riceImg from "@assets/generated_images/rice_steamed_bowl.png";
+import dalsImg from "@assets/generated_images/dals_lentil_curry.png";
+import breadsImg from "@assets/generated_images/breads_indian_naan.png";
+import asianMainsImg from "@assets/generated_images/asian_mains_stir-fry.png";
+import thaiBowlsImg from "@assets/generated_images/thai_bowls_noodles.png";
+import riceNoodlesImg from "@assets/generated_images/rice_noodles_asian.png";
+import sizzlersImg from "@assets/generated_images/sizzlers_hot_plate.png";
+import blendedWhiskyImg from "@assets/generated_images/blended_whisky_bottle.png";
+import blendedScotchWhiskyImg from "@assets/generated_images/scotch_whisky_premium.png";
+import americanIrishWhiskeyImg from "@assets/generated_images/american_irish_whiskey.png";
+import singleMaltWhiskyImg from "@assets/generated_images/single_malt_whisky.png";
+import vodkaImg from "@assets/generated_images/vodka_clear_spirit.png";
+import ginImg from "@assets/generated_images/gin_botanical_spirit.png";
+import rumImg from "@assets/generated_images/rum_caribbean_spirit.png";
+import tequilaImg from "@assets/generated_images/tequila_agave_spirit.png";
+import cognacBrandyImg from "@assets/generated_images/cognac_brandy_bottle.png";
+import liqueursImg from "@assets/generated_images/liqueurs_colorful_bottles.png";
+import sparklingWineImg from "@assets/generated_images/sparkling_wine_champagne.png";
+import whiteWinesImg from "@assets/generated_images/white_wines_bottle.png";
+import roseWinesImg from "@assets/generated_images/rose_wines_pink.png";
+import redWinesImg from "@assets/generated_images/red_wines_bottle.png";
+import dessertWinesImg from "@assets/generated_images/dessert_wines_sweet.png";
+import portWineImg from "@assets/generated_images/port_wine_bottle.png";
+import signatureMocktailsImg from "@assets/generated_images/signature_mocktails_drinks.png";
+import softBeveragesImg from "@assets/generated_images/soft_beverages_drinks.png";
+
 // Type declarations for Speech Recognition API
 declare global {
   interface Window {
@@ -767,25 +807,44 @@ export default function Menu() {
                   {(() => {
                     const getImageForCategory = (categoryId: string) => {
                       const imageMap: Record<string, string> = {
-                        new: "/images/new.png",
-                        soups: "/images/Soups.png",
-                        vegstarter: "/images/Veg Starters.png",
-                        chickenstarter: "/images/Chicken Starters.png",
-                        prawnsstarter: "/images/Prawn Starters.png",
-                        seafood: "/images/seafood.png",
-                        springrolls: "/images/Spring rolls.png",
-                        momos: "/images/momos.png",
-                        gravies: "/images/gravies.png",
-                        potrice: "/images/pot rice.png",
-                        rice: "/images/rice.png",
-                        ricewithgravy: "/images/Rice with gravy.png",
-                        noodle: "/images/noodles.png",
-                        noodlewithgravy: "/images/Noodle with gravy.png",
-                        thai: "/images/thai-food.png",
-                        chopsuey: "/images/Chop suey.png",
-                        desserts: "/images/dessert.png",
-                        beverages: "/images/Beavrages.png",
-                        extra: "/images/Extra.png",
+                        nibbles: nibblesImg,
+                        titbits: titbitsImg,
+                        soups: soupsImg,
+                        salads: saladsImg,
+                        starters: startersImg,
+                        charcoal: charcoalImg,
+                        pasta: pastaImg,
+                        pizza: pizzaImg,
+                        sliders: slidersImg,
+                        entree: entreeImg,
+                        "bao-dimsum": baoDimsumImg,
+                        curries: curriesImg,
+                        biryani: biryaniImg,
+                        rice: riceImg,
+                        dals: dalsImg,
+                        breads: breadsImg,
+                        "asian-mains": asianMainsImg,
+                        "thai-bowls": thaiBowlsImg,
+                        "rice-noodles": riceNoodlesImg,
+                        sizzlers: sizzlersImg,
+                        "blended-whisky": blendedWhiskyImg,
+                        "blended-scotch-whisky": blendedScotchWhiskyImg,
+                        "american-irish-whiskey": americanIrishWhiskeyImg,
+                        "single-malt-whisky": singleMaltWhiskyImg,
+                        vodka: vodkaImg,
+                        gin: ginImg,
+                        rum: rumImg,
+                        tequila: tequilaImg,
+                        "cognac-brandy": cognacBrandyImg,
+                        liqueurs: liqueursImg,
+                        "sparkling-wine": sparklingWineImg,
+                        "white-wines": whiteWinesImg,
+                        "rose-wines": roseWinesImg,
+                        "red-wines": redWinesImg,
+                        "dessert-wines": dessertWinesImg,
+                        "port-wine": portWineImg,
+                        "signature-mocktails": signatureMocktailsImg,
+                        "soft-beverages": softBeveragesImg,
                       };
                       return imageMap[categoryId];
                     };
