@@ -86,45 +86,44 @@ const promotionalImages = [
 
 // Now each category has both a display label and the actual MongoDB category name
 const categories = [
-  { id: "new", displayLabel: "New", dbCategory: "new" },
+  { id: "nibbles", displayLabel: "Nibbles", dbCategory: "nibbles" },
+  { id: "titbits", displayLabel: "Titbits", dbCategory: "titbits" },
   { id: "soups", displayLabel: "Soups", dbCategory: "soups" },
-  { id: "vegstarter", displayLabel: "Veg Starter", dbCategory: "vegstarter" },
-  {
-    id: "chickenstarter",
-    displayLabel: "Chicken Starter",
-    dbCategory: "chickenstarter",
-  },
-  {
-    id: "prawnsstarter",
-    displayLabel: "Prawns Starter",
-    dbCategory: "prawnsstarter",
-  },
-  { id: "seafood", displayLabel: "Sea Food", dbCategory: "seafood" },
-  {
-    id: "springrolls",
-    displayLabel: "Spring Rolls",
-    dbCategory: "springrolls",
-  },
-  { id: "momos", displayLabel: "Momos", dbCategory: "momos" },
-  { id: "gravies", displayLabel: "Gravies", dbCategory: "gravies" },
-  { id: "potrice", displayLabel: "Pot Rice", dbCategory: "potrice" },
+  { id: "salads", displayLabel: "Salads", dbCategory: "salads" },
+  { id: "starters", displayLabel: "Starters", dbCategory: "starters" },
+  { id: "charcoal", displayLabel: "Charcoal", dbCategory: "charcoal" },
+  { id: "pasta", displayLabel: "Pasta", dbCategory: "pasta" },
+  { id: "pizza", displayLabel: "Pizza", dbCategory: "pizza" },
+  { id: "sliders", displayLabel: "Sliders", dbCategory: "sliders" },
+  { id: "entree", displayLabel: "Entree", dbCategory: "entree" },
+  { id: "bao-dimsum", displayLabel: "Bao-Dimsum", dbCategory: "bao-dimsum" },
+  { id: "curries", displayLabel: "Curries", dbCategory: "curries" },
+  { id: "biryani", displayLabel: "Biryani", dbCategory: "biryani" },
   { id: "rice", displayLabel: "Rice", dbCategory: "rice" },
-  {
-    id: "ricewithgravy",
-    displayLabel: "Rice with Gravy",
-    dbCategory: "ricewithgravy",
-  },
-  { id: "noodle", displayLabel: "Noodle", dbCategory: "noodle" },
-  {
-    id: "noodlewithgravy",
-    displayLabel: "Noodle with Gravy",
-    dbCategory: "noodlewithgravy",
-  },
-  { id: "thai", displayLabel: "Thai", dbCategory: "thai" },
-  { id: "chopsuey", displayLabel: "Chop Suey", dbCategory: "chopsuey" },
-  { id: "desserts", displayLabel: "Desserts", dbCategory: "desserts" },
-  { id: "beverages", displayLabel: "Beverages", dbCategory: "beverages" },
-  { id: "extra", displayLabel: "Extra", dbCategory: "extra" },
+  { id: "dals", displayLabel: "Dals", dbCategory: "dals" },
+  { id: "breads", displayLabel: "Breads", dbCategory: "breads" },
+  { id: "asian-mains", displayLabel: "Asian-Mains", dbCategory: "asian-mains" },
+  { id: "thai-bowls", displayLabel: "Thai-Bowls", dbCategory: "thai-bowls" },
+  { id: "rice-noodles", displayLabel: "Rice-Noodles", dbCategory: "rice-noodles" },
+  { id: "sizzlers", displayLabel: "Sizzlers", dbCategory: "sizzlers" },
+  { id: "blended-whisky", displayLabel: "Blended Whisky", dbCategory: "blended-whisky" },
+  { id: "blended-scotch-whisky", displayLabel: "Blended Scotch Whisky", dbCategory: "blended-scotch-whisky" },
+  { id: "american-irish-whiskey", displayLabel: "American & Irish Whiskey", dbCategory: "american-irish-whiskey" },
+  { id: "single-malt-whisky", displayLabel: "Single Malt Whisky", dbCategory: "single-malt-whisky" },
+  { id: "vodka", displayLabel: "Vodka", dbCategory: "vodka" },
+  { id: "gin", displayLabel: "Gin", dbCategory: "gin" },
+  { id: "rum", displayLabel: "Rum", dbCategory: "rum" },
+  { id: "tequila", displayLabel: "Tequila", dbCategory: "tequila" },
+  { id: "cognac-brandy", displayLabel: "Cognac & Brandy", dbCategory: "cognac-brandy" },
+  { id: "liqueurs", displayLabel: "Liqueurs", dbCategory: "liqueurs" },
+  { id: "sparkling-wine", displayLabel: "Sparkling Wine", dbCategory: "sparkling-wine" },
+  { id: "white-wines", displayLabel: "White Wines", dbCategory: "white-wines" },
+  { id: "rose-wines", displayLabel: "Rosé Wines", dbCategory: "rose-wines" },
+  { id: "red-wines", displayLabel: "Red Wines", dbCategory: "red-wines" },
+  { id: "dessert-wines", displayLabel: "Dessert Wines", dbCategory: "dessert-wines" },
+  { id: "port-wine", displayLabel: "Port Wine", dbCategory: "port-wine" },
+  { id: "signature-mocktails", displayLabel: "Signature Mocktails", dbCategory: "signature-mocktails" },
+  { id: "soft-beverages", displayLabel: "Soft Beverages", dbCategory: "soft-beverages" },
 ];
 
 const filterTypes = [
@@ -135,7 +134,7 @@ const filterTypes = [
 
 export default function Menu() {
   const [, setLocation] = useLocation();
-  const [activeCategory, setActiveCategory] = useState("new");
+  const [activeCategory, setActiveCategory] = useState("nibbles");
   const [filterType, setFilterType] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilterDropdown, setShowFilterDropdown] = useState(false);

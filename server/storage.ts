@@ -349,6 +349,8 @@ export interface IStorage {
   addToCart(item: InsertCartItem): Promise<CartItem>;
   removeFromCart(id: string): Promise<void>;
   clearCart(): Promise<void>;
+  
+  clearDatabase(): Promise<void>;
 }
 
 export class MongoStorage implements IStorage {
@@ -359,27 +361,46 @@ export class MongoStorage implements IStorage {
   private usersCollection: Collection<User>;
   private restaurantId: ObjectId;
 
-  // Define available categories - these match menu.tsx categories
+  // Define available categories
   private readonly categories = [
-    "new",
+    "nibbles",
+    "titbits",
     "soups",
-    "vegstarter",
-    "chickenstarter",
-    "prawnsstarter",
-    "seafood",
-    "springrolls",
-    "momos",
-    "gravies",
-    "potrice",
+    "salads",
+    "starters",
+    "charcoal",
+    "pasta",
+    "pizza",
+    "sliders",
+    "entree",
+    "bao-dimsum",
+    "curries",
+    "biryani",
     "rice",
-    "ricewithgravy",
-    "noodle",
-    "noodlewithgravy",
-    "thai",
-    "chopsuey",
-    "desserts",
-    "beverages",
-    "extra"
+    "dals",
+    "breads",
+    "asian-mains",
+    "thai-bowls",
+    "rice-noodles",
+    "sizzlers",
+    "blended-whisky",
+    "blended-scotch-whisky",
+    "american-irish-whiskey",
+    "single-malt-whisky",
+    "vodka",
+    "gin",
+    "rum",
+    "tequila",
+    "cognac-brandy",
+    "liqueurs",
+    "sparkling-wine",
+    "white-wines",
+    "rose-wines",
+    "red-wines",
+    "dessert-wines",
+    "port-wine",
+    "signature-mocktails",
+    "soft-beverages"
   ];
 
 
@@ -390,27 +411,10 @@ export class MongoStorage implements IStorage {
     this.categoryCollections = new Map();
 
     // Initialize collections for each category with correct collection names
-    const categoryCollectionMapping = {
-      "new": "new",
-      "soups": "soups",
-      "vegstarter": "vegstarter",
-      "chickenstarter": "chickenstarter",
-      "prawnsstarter": "prawnsstarter",
-      "seafood": "seafood",
-      "springrolls": "springrolls",
-      "momos": "momos",
-      "gravies": "gravies",
-      "potrice": "potrice",
-      "rice": "rice",
-      "ricewithgravy": "ricewithgravy",
-      "noodle": "noodle",
-      "noodlewithgravy": "noodlewithgravy",
-      "thai": "thai",
-      "chopsuey": "chopsuey",
-      "desserts": "desserts",
-      "beverages": "beverages",
-      "extra": "extra"
-    };
+    const categoryCollectionMapping: Record<string, string> = {};
+    this.categories.forEach(cat => {
+      categoryCollectionMapping[cat] = cat;
+    });
 
 
     this.categories.forEach(category => {
@@ -629,6 +633,30 @@ export class MongoStorage implements IStorage {
       await this.cartItemsCollection.deleteMany({});
     } catch (error) {
       console.error("Error clearing cart:", error);
+      throw error;
+    }
+  }
+
+  async clearDatabase(): Promise<void> {
+    try {
+      // Get all existing collections
+      const existingCollections = await this.db.listCollections().toArray();
+      
+      // Drop all collections except system collections
+      for (const collection of existingCollections) {
+        const name = collection.name;
+        // Skip system collections
+        if (name.startsWith('system.')) continue;
+        // Drop the collection
+        await this.db.dropCollection(name);
+        console.log(`Dropped collection: ${name}`);
+      }
+      
+      // Recreate collections for new categories
+      await this.ensureCollectionsExist();
+      console.log("Database cleared and fresh collections created");
+    } catch (error) {
+      console.error("Error clearing database:", error);
       throw error;
     }
   }
