@@ -18,7 +18,7 @@ import { FaInstagram } from "react-icons/fa";
 import { useLocation } from "wouter";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import DishCard from "@/components/dish-card";
 import type { MenuItem } from "@shared/schema";
 
@@ -150,26 +150,66 @@ const categories = [
   { id: "breads", displayLabel: "Breads", dbCategory: "breads" },
   { id: "asian-mains", displayLabel: "Asian-Mains", dbCategory: "asian-mains" },
   { id: "thai-bowls", displayLabel: "Thai-Bowls", dbCategory: "thai-bowls" },
-  { id: "rice-noodles", displayLabel: "Rice-Noodles", dbCategory: "rice-noodles" },
+  {
+    id: "rice-noodles",
+    displayLabel: "Rice-Noodles",
+    dbCategory: "rice-noodles",
+  },
   { id: "sizzlers", displayLabel: "Sizzlers", dbCategory: "sizzlers" },
-  { id: "blended-whisky", displayLabel: "Blended Whisky", dbCategory: "blended-whisky" },
-  { id: "blended-scotch-whisky", displayLabel: "Blended Scotch Whisky", dbCategory: "blended-scotch-whisky" },
-  { id: "american-irish-whiskey", displayLabel: "American & Irish Whiskey", dbCategory: "american-irish-whiskey" },
-  { id: "single-malt-whisky", displayLabel: "Single Malt Whisky", dbCategory: "single-malt-whisky" },
+  {
+    id: "blended-whisky",
+    displayLabel: "Blended Whisky",
+    dbCategory: "blended-whisky",
+  },
+  {
+    id: "blended-scotch-whisky",
+    displayLabel: "Blended Scotch Whisky",
+    dbCategory: "blended-scotch-whisky",
+  },
+  {
+    id: "american-irish-whiskey",
+    displayLabel: "American & Irish Whiskey",
+    dbCategory: "american-irish-whiskey",
+  },
+  {
+    id: "single-malt-whisky",
+    displayLabel: "Single Malt Whisky",
+    dbCategory: "single-malt-whisky",
+  },
   { id: "vodka", displayLabel: "Vodka", dbCategory: "vodka" },
   { id: "gin", displayLabel: "Gin", dbCategory: "gin" },
   { id: "rum", displayLabel: "Rum", dbCategory: "rum" },
   { id: "tequila", displayLabel: "Tequila", dbCategory: "tequila" },
-  { id: "cognac-brandy", displayLabel: "Cognac & Brandy", dbCategory: "cognac-brandy" },
+  {
+    id: "cognac-brandy",
+    displayLabel: "Cognac & Brandy",
+    dbCategory: "cognac-brandy",
+  },
   { id: "liqueurs", displayLabel: "Liqueurs", dbCategory: "liqueurs" },
-  { id: "sparkling-wine", displayLabel: "Sparkling Wine", dbCategory: "sparkling-wine" },
+  {
+    id: "sparkling-wine",
+    displayLabel: "Sparkling Wine",
+    dbCategory: "sparkling-wine",
+  },
   { id: "white-wines", displayLabel: "White Wines", dbCategory: "white-wines" },
   { id: "rose-wines", displayLabel: "Rosé Wines", dbCategory: "rose-wines" },
   { id: "red-wines", displayLabel: "Red Wines", dbCategory: "red-wines" },
-  { id: "dessert-wines", displayLabel: "Dessert Wines", dbCategory: "dessert-wines" },
+  {
+    id: "dessert-wines",
+    displayLabel: "Dessert Wines",
+    dbCategory: "dessert-wines",
+  },
   { id: "port-wine", displayLabel: "Port Wine", dbCategory: "port-wine" },
-  { id: "signature-mocktails", displayLabel: "Signature Mocktails", dbCategory: "signature-mocktails" },
-  { id: "soft-beverages", displayLabel: "Soft Beverages", dbCategory: "soft-beverages" },
+  {
+    id: "signature-mocktails",
+    displayLabel: "Signature Mocktails",
+    dbCategory: "signature-mocktails",
+  },
+  {
+    id: "soft-beverages",
+    displayLabel: "Soft Beverages",
+    dbCategory: "soft-beverages",
+  },
 ];
 
 const filterTypes = [
@@ -356,10 +396,10 @@ export default function Menu() {
               <h1
                 className="font-bold"
                 style={{
-                  fontSize: 'clamp(18px, 4vw, 28px)',
-                  color: '#D97706',
+                  fontSize: "clamp(18px, 4vw, 28px)",
+                  color: "#D97706",
                   fontFamily: "'Playfair Display', serif",
-                  letterSpacing: '1px',
+                  letterSpacing: "1px",
                 }}
               >
                 BARREL BORN
@@ -732,68 +772,68 @@ export default function Menu() {
         </div>
       </div>
 
-{/* Promotional Image Carousel */}
-<div className="container mx-auto px-3 sm:px-4 mb-3 sm:mb-4">
-  <div className="relative w-full h-40 sm:h-48 md:h-80 rounded-lg sm:rounded-xl overflow-hidden shadow-lg">
-    <motion.div
-      className="flex transition-transform duration-1000 ease-in-out h-full"
-      style={{
-        transform: `translateX(-${currentImageIndex * 100}%)`,
-      }}
-    >
-      {promotionalImages.map((image) => (
-        <div
-          key={image.id}
-          className="min-w-full h-full relative"
-          style={{ flexShrink: 0 }}
-        >
-          {/* Mobile/Tablet - SVG filling both width and height */}
-          <svg
-            viewBox="0 0 800 450" // Adjust to your SVG's original dimensions
-            className="w-full h-full md:hidden"
-            preserveAspectRatio="none"
+      {/* Promotional Image Carousel */}
+      <div className="container mx-auto px-3 sm:px-4 mb-3 sm:mb-4">
+        <div className="relative w-full h-40 sm:h-48 md:h-80 rounded-lg sm:rounded-xl overflow-hidden shadow-lg">
+          <motion.div
+            className="flex transition-transform duration-1000 ease-in-out h-full"
+            style={{
+              transform: `translateX(-${currentImageIndex * 100}%)`,
+            }}
           >
-            <image
-              href={image.src}
-              width="100%"
-              height="100%"
-              preserveAspectRatio="none"
-            />
-          </svg>
-          
-          {/* Desktop - SVG filling both width and height */}
-          <svg
-            viewBox="0 0 800 450" // Adjust to your SVG's original dimensions
-            className="w-full h-full hidden md:block"
-            preserveAspectRatio="none"
-          >
-            <image
-              href={image.src}
-              width="100%"
-              height="100%"
-              preserveAspectRatio="none"
-            />
-          </svg>
-        </div>
-      ))}
-    </motion.div>
+            {promotionalImages.map((image) => (
+              <div
+                key={image.id}
+                className="min-w-full h-full relative"
+                style={{ flexShrink: 0 }}
+              >
+                {/* Mobile/Tablet - SVG filling both width and height */}
+                <svg
+                  viewBox="0 0 800 450" // Adjust to your SVG's original dimensions
+                  className="w-full h-full md:hidden"
+                  preserveAspectRatio="none"
+                >
+                  <image
+                    href={image.src}
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="none"
+                  />
+                </svg>
 
-    {/* Indicator dots */}
-    <div className="absolute bottom-2 sm:bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2">
-      {promotionalImages.map((_, index) => (
-        <button
-          key={index}
-          onClick={() => setCurrentImageIndex(index)}
-          className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
-            index === currentImageIndex
-              ? "bg-white shadow-lg scale-125"
-              : "bg-white/50 hover:bg-white/75"
-          }`}
-        />
-      ))}
-    </div>
-  </div>
-</div>
+                {/* Desktop - SVG filling both width and height */}
+                <svg
+                  viewBox="0 0 800 450" // Adjust to your SVG's original dimensions
+                  className="w-full h-full hidden md:block"
+                  preserveAspectRatio="none"
+                >
+                  <image
+                    href={image.src}
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="none"
+                  />
+                </svg>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Indicator dots */}
+          <div className="absolute bottom-2 sm:bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2">
+            {promotionalImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex
+                    ? "bg-white shadow-lg scale-125"
+                    : "bg-white/50 hover:bg-white/75"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* Category Tabs */}
       <div className="container mx-auto px-3 sm:px-4 mb-6 sm:mb-8 md:mb-10">
@@ -939,84 +979,84 @@ export default function Menu() {
       )}
 
       {/* Dishes Grid - Responsive grid with proper alignment */}
-{/* Dishes Grid - Responsive grid with proper alignment */}
-{/* Dishes Grid - Responsive grid with proper alignment */}
-<div className="container mx-auto px-3 sm:px-4 pb-8 sm:pb-12">
-  {isLoading ? (
-    <div className="text-center py-12 sm:py-20">
-      <div className="relative mx-auto w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 mb-6 sm:mb-8">
-        <DotLottieReact
-          src="https://lottie.host/a5b9e907-1da9-47f7-8134-ead1956cb8c2/xMA2QBGkvC.lottie"
-          loop
-          autoplay
-          className="w-full h-full"
-        />
+      {/* Dishes Grid - Responsive grid with proper alignment */}
+      {/* Dishes Grid - Responsive grid with proper alignment */}
+      <div className="container mx-auto px-3 sm:px-4 pb-8 sm:pb-12">
+        {isLoading ? (
+          <div className="text-center py-12 sm:py-20">
+            <div className="relative mx-auto w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 mb-6 sm:mb-8">
+              <DotLottieReact
+                src="https://lottie.host/a5b9e907-1da9-47f7-8134-ead1956cb8c2/xMA2QBGkvC.lottie"
+                loop
+                autoplay
+                className="w-full h-full"
+              />
+            </div>
+            <p
+              className="text-lg sm:text-xl md:text-2xl"
+              style={{
+                color: "var(--elegant-gray)",
+                fontFamily: "'Poppins', sans-serif",
+              }}
+            >
+              Loading Cuisine
+            </p>
+          </div>
+        ) : filteredItems.length === 0 ? (
+          <div className="text-center py-12 sm:py-20">
+            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 max-w-sm sm:max-w-md mx-auto elegant-shadow">
+              <p
+                className="font-serif text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4"
+                style={{ color: "var(--elegant-gold)" }}
+              >
+                {searchQuery.trim()
+                  ? "No dishes found for your search"
+                  : "No Royal Dishes Found"}
+              </p>
+              <p
+                className="font-sans text-sm sm:text-base md:text-lg"
+                style={{ color: "var(--elegant-gray)" }}
+              >
+                {searchQuery.trim()
+                  ? "Try searching with different keywords"
+                  : "Try adjusting your search or filters"}
+              </p>
+            </div>
+          </div>
+        ) : (
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+            style={{
+              alignItems: "stretch", // This stretches all cards to equal height
+            }}
+          >
+            {filteredItems.map((item, index) => (
+              <motion.div
+                key={item._id.toString()}
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="h-full" // Ensures each grid item takes full height
+              >
+                <DishCard item={item} />
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
-      <p
-        className="text-lg sm:text-xl md:text-2xl"
-        style={{ 
-          color: "var(--elegant-gray)",
-          fontFamily: "'Poppins', sans-serif"
-        }}
-      >
-        Loading Chinese Cuisine
-      </p>
-    </div>
-  ) : filteredItems.length === 0 ? (
-    <div className="text-center py-12 sm:py-20">
-      <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 max-w-sm sm:max-w-md mx-auto elegant-shadow">
-        <p
-          className="font-serif text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4"
-          style={{ color: "var(--elegant-gold)" }}
-        >
-          {searchQuery.trim()
-            ? "No dishes found for your search"
-            : "No Royal Dishes Found"}
-        </p>
-        <p
-          className="font-sans text-sm sm:text-base md:text-lg"
-          style={{ color: "var(--elegant-gray)" }}
-        >
-          {searchQuery.trim()
-            ? "Try searching with different keywords"
-            : "Try adjusting your search or filters"}
-        </p>
-      </div>
-    </div>
-  ) : (
-    <motion.div
-      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6"
-      initial="hidden"
-      animate="visible"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: {
-            staggerChildren: 0.1,
-          },
-        },
-      }}
-      style={{
-        alignItems: "stretch", // This stretches all cards to equal height
-      }}
-    >
-      {filteredItems.map((item, index) => (
-        <motion.div
-          key={item._id.toString()}
-          variants={{
-            hidden: { opacity: 0, y: 30 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.6, delay: index * 0.1 }}
-          className="h-full" // Ensures each grid item takes full height
-        >
-          <DishCard item={item} />
-        </motion.div>
-      ))}
-    </motion.div>
-  )}
-</div>
 
       {/* Click outside to close dropdown */}
       {showFilterDropdown && (
@@ -1028,4 +1068,3 @@ export default function Menu() {
     </div>
   );
 }
-
