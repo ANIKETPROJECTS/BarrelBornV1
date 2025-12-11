@@ -670,9 +670,38 @@ export class MongoStorage implements IStorage {
       // Non-veg keywords - items containing these should be isVeg: false
       const nonVegKeywords = [
         'chicken', 'prawns', 'prawn', 'mutton', 'lamb', 'fish', 'seafood',
-        'pork', 'beef', 'meat', 'egg', 'keema', 'tikka', 'tandoori chicken',
+        'pork', 'meat', 'keema', 'kheema', 'tandoori chicken', 'egg',
         'butter chicken', 'kadai chicken', 'murgh', 'gosht', 'jhinga',
-        'lobster', 'crab', 'squid', 'octopus', 'salmon', 'tuna'
+        'lobster', 'crab', 'squid', 'octopus', 'salmon', 'tuna',
+        'bacon', 'ham', 'sausage', 'pepperoni', 'salami', 'duck', 'turkey',
+        'quail', 'venison', 'rabbit', 'oyster', 'clam', 'shrimp', 'anchovies'
+      ];
+
+      // Items that should always be VEG despite containing non-veg keywords
+      const vegExceptions = [
+        'beefeater',      // Gin brand name
+        'chameleon',      // Contains 'ham' but is a mocktail
+        'ranthambore',    // Contains 'ham' but is a mocktail  
+        'veggie',         // Explicitly vegetarian
+        'veg ',           // Items starting with Veg
+        'paneer',         // Cottage cheese - always veg
+        'cottage cheese', // Always veg
+        'tofu',           // Always veg
+        'mushroom',       // Always veg
+        'vegetable',      // Always veg
+        'dal ',           // Lentils - always veg
+        'aloo',           // Potato - always veg
+        'gobi',           // Cauliflower - always veg
+        'palak',          // Spinach - always veg
+        'chana',          // Chickpeas - always veg
+        'rajma'           // Kidney beans - always veg
+      ];
+
+      // Items that should always be NON-VEG
+      const nonVegExact = [
+        'kheema mutter',
+        'keema mutter',
+        'bombay irani kheema'
       ];
 
       // Iterate through all category collections
@@ -682,11 +711,28 @@ export class MongoStorage implements IStorage {
         for (const item of items) {
           const nameLower = item.name.toLowerCase();
           
+          // Check if item is an exception that should be veg
+          const isVegException = vegExceptions.some(exc => nameLower.includes(exc));
+          
+          // Check if item matches exact non-veg patterns
+          const isExactNonVeg = nonVegExact.some(exact => nameLower.includes(exact));
+          
           // Check if item name contains any non-veg keyword
-          const isNonVeg = nonVegKeywords.some(keyword => nameLower.includes(keyword));
+          const containsNonVegKeyword = nonVegKeywords.some(keyword => nameLower.includes(keyword));
+          
+          // Determine if item should be non-veg
+          let shouldBeNonVeg = false;
+          
+          if (isExactNonVeg) {
+            shouldBeNonVeg = true;
+          } else if (isVegException) {
+            shouldBeNonVeg = false;
+          } else if (containsNonVegKeyword) {
+            shouldBeNonVeg = true;
+          }
           
           // If item should be non-veg but is marked as veg, update it
-          if (isNonVeg && item.isVeg === true) {
+          if (shouldBeNonVeg && item.isVeg === true) {
             await collection.updateOne(
               { _id: item._id },
               { $set: { isVeg: false } }
@@ -695,7 +741,7 @@ export class MongoStorage implements IStorage {
             totalUpdated++;
           }
           // If item should be veg but is marked as non-veg, update it
-          else if (!isNonVeg && item.isVeg === false) {
+          else if (!shouldBeNonVeg && item.isVeg === false) {
             await collection.updateOne(
               { _id: item._id },
               { $set: { isVeg: true } }
