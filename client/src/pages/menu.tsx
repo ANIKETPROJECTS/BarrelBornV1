@@ -467,15 +467,13 @@ export default function Menu() {
                         className="font-semibold text-gray-800"
                         style={{ fontFamily: "Open Sans, sans-serif" }}
                       >
-                        Mings Chinese Cuisine
+                        Barrel Born
                       </p>
                       <p
                         className="text-sm text-gray-600"
                         style={{ fontFamily: "Open Sans, sans-serif" }}
                       >
-                        Shop no 2&3, ganga godavari apartment, katemanivali
-                        naka, Prabhuram Nagar, Kalyan East, Thane, Kalyan,
-                        Maharashtra 421306
+                        Thane, Maharashtra
                       </p>
                     </div>
                   </div>
@@ -486,7 +484,7 @@ export default function Menu() {
                         className="font-semibold text-gray-800"
                         style={{ fontFamily: "Open Sans, sans-serif" }}
                       >
-                        07506969333
+                        Contact Us
                       </p>
                       <p
                         className="text-sm text-gray-600"
@@ -519,7 +517,7 @@ export default function Menu() {
                       <button
                         onClick={() =>
                           window.open(
-                            "https://instagram.com/mingschinesecuisine",
+                            "https://instagram.com/barrelborn",
                             "_blank",
                             "noopener,noreferrer",
                           )
@@ -527,7 +525,7 @@ export default function Menu() {
                         className="font-semibold text-blue-600 hover:underline"
                         style={{ fontFamily: "Open Sans, sans-serif" }}
                       >
-                        @mingschinesecuisine
+                        @barrelborn
                       </button>
                       <p
                         className="text-sm text-gray-600"

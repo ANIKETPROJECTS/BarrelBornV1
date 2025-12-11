@@ -351,6 +351,7 @@ export interface IStorage {
   clearCart(): Promise<void>;
   
   clearDatabase(): Promise<void>;
+  fixVegNonVegClassification(): Promise<{ updated: number; details: string[] }>;
 }
 
 export class MongoStorage implements IStorage {
@@ -657,6 +658,58 @@ export class MongoStorage implements IStorage {
       console.log("Database cleared and fresh collections created");
     } catch (error) {
       console.error("Error clearing database:", error);
+      throw error;
+    }
+  }
+
+  async fixVegNonVegClassification(): Promise<{ updated: number; details: string[] }> {
+    try {
+      const details: string[] = [];
+      let totalUpdated = 0;
+
+      // Non-veg keywords - items containing these should be isVeg: false
+      const nonVegKeywords = [
+        'chicken', 'prawns', 'prawn', 'mutton', 'lamb', 'fish', 'seafood',
+        'pork', 'beef', 'meat', 'egg', 'keema', 'tikka', 'tandoori chicken',
+        'butter chicken', 'kadai chicken', 'murgh', 'gosht', 'jhinga',
+        'lobster', 'crab', 'squid', 'octopus', 'salmon', 'tuna'
+      ];
+
+      // Iterate through all category collections
+      for (const [category, collection] of this.categoryCollections) {
+        const items = await collection.find({}).toArray();
+        
+        for (const item of items) {
+          const nameLower = item.name.toLowerCase();
+          
+          // Check if item name contains any non-veg keyword
+          const isNonVeg = nonVegKeywords.some(keyword => nameLower.includes(keyword));
+          
+          // If item should be non-veg but is marked as veg, update it
+          if (isNonVeg && item.isVeg === true) {
+            await collection.updateOne(
+              { _id: item._id },
+              { $set: { isVeg: false } }
+            );
+            details.push(`Fixed: "${item.name}" changed from veg to non-veg`);
+            totalUpdated++;
+          }
+          // If item should be veg but is marked as non-veg, update it
+          else if (!isNonVeg && item.isVeg === false) {
+            await collection.updateOne(
+              { _id: item._id },
+              { $set: { isVeg: true } }
+            );
+            details.push(`Fixed: "${item.name}" changed from non-veg to veg`);
+            totalUpdated++;
+          }
+        }
+      }
+
+      console.log(`Fixed ${totalUpdated} items' veg/non-veg classification`);
+      return { updated: totalUpdated, details };
+    } catch (error) {
+      console.error("Error fixing veg/non-veg classification:", error);
       throw error;
     }
   }

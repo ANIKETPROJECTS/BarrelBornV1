@@ -86,6 +86,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Fix veg/non-veg classification
+  app.post("/api/fix-veg-classification", async (req, res) => {
+    try {
+      const result = await storage.fixVegNonVegClassification();
+      res.json({
+        message: `Fixed ${result.updated} items`,
+        updated: result.updated,
+        details: result.details
+      });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fix veg classification" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
